@@ -1,0 +1,7 @@
+SerialFlush	KEYWORD1
+flushSerial	KEYWORD2
+flushSerial1	KEYWORD2
+flushSerial2	KEYWORD2
+flushSerial3	KEYWORD2
+flushSerialUSB	KEYWORD2
+flushWire	KEYWORD2
