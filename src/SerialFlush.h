@@ -10,7 +10,7 @@
 #define SERIAL_2_ENABLED_SerialFlush // comment out if you do not use serial communication to reduce use of program storage and global registers - HardwareSerial library could be rewritten to not use any program storage and global registers if this library is included and unused - this does not affect SPI library for most platforms
 #define SERIAL_3_ENABLED_SerialFlush // comment out if you do not use serial communication to reduce use of program storage and global registers - HardwareSerial library could be rewritten to not use any program storage and global registers if this library is included and unused - this does not affect SPI library for most platforms
 
-#if defined(__AVR_ATmega328P__) || defined(__AVR_ATmega168__) || defined(__AVR_ATmega88__) || defined(__AVR_ATmega48__) || defined(__AVR_ATmega8__) || defined(__AVR_ATmega1280__) || defined(__AVR_ATmega2560__) || defined(__AVR_ATmega16U4__) || defined(__AVR_ATmega32U4__) || defined(ARDUINO_SAMD_ZERO) || defined(ARDUINO_SAM_DUE)
+#if defined(__AVR_ATmega328P__) || defined(__AVR_ATmega168__) || defined(__AVR_ATmega88__) || defined(__AVR_ATmega48__) || defined(__AVR_ATmega8__) || defined(__AVR_ATmega1280__) || defined(__AVR_ATmega2560__) || defined(__AVR_ATmega16U4__) || defined(__AVR_ATmega32U4__) || defined(ARDUINO_SAMD_ZERO) || defined(ARDUINO_SAM_DUE) || defined(_PICO_VERSION_H)
 #if defined(SERIAL_ENABLED_SerialFlush)
 #define SERIALPORT_AVAILABLE_SerialFlush // consumes program storage and global registers even when functions covered under this definition are not used
 #endif
@@ -29,6 +29,15 @@
 #endif
 #if defined(SERIAL_3_ENABLED_SerialFlush)
 #define AUXSERIALPORT_3_AVAILABLE_SerialFlush
+#endif
+#endif
+
+#if defined(_PICO_VERSION_H)
+#if defined(SERIAL_1_ENABLED_SerialFlush)
+#define AUXSERIALPORT_1_AVAILABLE_SerialFlush
+#endif
+#if defined(SERIAL_2_ENABLED_SerialFlush)
+#define AUXSERIALPORT_2_AVAILABLE_SerialFlush
 #endif
 #endif
 
@@ -67,6 +76,7 @@ extern SerialFlushClass SerialFlush;
 #elif defined(__AVR_ATmega16U4__) || defined(__AVR_ATmega32U4__) // Serial/Wire/SPI
 #elif defined(ARDUINO_SAMD_ZERO) // Serial/Wire/SPI
 #elif defined(ARDUINO_SAM_DUE) // Serial/Wire/SPI/Aux Serial x3/USB Serial
+#elif defined(_PICO_VERSION_H) // Raspberry Pi Pico
 #else
 #error Unsupported chip, please edit SerialFlush library with corresponding supported hardware functions
 #endif

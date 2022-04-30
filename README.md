@@ -4,11 +4,12 @@ SerialFlush is a discrete library for flushing the contents of a given serial po
 
 Revisions
 1.0.0	First release
+1.0.1	Added support for Raspberry Pi Pico
 
 USAGE:
 (flushSerial/flushSerial(1/2/3/USB)/flushWire)(BaudRate) - BaudRate determines if more than one flush is required which checks if at least one byte has been received after the previous flush
 
-Serial(1/2/3) is only supported on Mega/Due and derivatives and SerialUSB is only supported on Due and derivatives.
+Serial(1/2/3) is only supported on Mega/Due and derivatives and SerialUSB is only supported on Due and derivatives; Serial(1/2) is only supported on Raspberry Pi Pico.
 
 ## Issues
 
